@@ -6,7 +6,7 @@
 * Created: 2017-08-25 22:01:03
 *------------------------------------------------------- */
 
-import { SINGLE_API, CHAIN_API, PARALLEL_API } from 'src/redux/actions/types';
+import { SINGLE_API } from 'src/redux/actions/types';
 
 import fetchAPI from 'src/utils/fetch-api';
 
@@ -73,7 +73,6 @@ export const testSignApi = (payload, next = f => f) => {
 // 		},
 // 	};
 // }
-
 
 // /* PARALLEL_API
 // *------------------------------------------------------- */

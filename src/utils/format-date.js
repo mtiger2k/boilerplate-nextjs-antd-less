@@ -1,3 +1,4 @@
+/* eslint-disable no-unsafe-optional-chaining */
 /* --------------------------------------------------------
 * Author Trần Đức Tiến
 * Email tientran0019@gmail.com

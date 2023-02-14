@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable react/prop-types */
 /* --------------------------------------------------------
 * Author Trần Đức Tiến
 * Email tientran0019@gmail.com
@@ -9,11 +11,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useDispatch } from 'react-redux';
-import useAsyncRetry from 'react-use/lib/useAsyncRetry';
 import { withRouter } from 'next/router';
-
-import { getList } from 'src/redux/actions/users';
 
 import UserCard from './UserCard';
 
@@ -26,7 +24,7 @@ const defaultProps = {
 };
 
 const UsersList = (props) => {
-	const { router, userList = [] } = props;
+	const { userList = [] } = props;
 
 	// const { query = {} } = router;
 

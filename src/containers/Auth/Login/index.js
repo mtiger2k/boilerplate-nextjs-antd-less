@@ -14,8 +14,6 @@ import AuthStorage from 'src/utils/auth-storage';
 import Router from 'next/router';
 import Link from 'next/link';
 
-import Image from 'next/image';
-
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 

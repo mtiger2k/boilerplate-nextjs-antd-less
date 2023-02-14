@@ -15,6 +15,7 @@ import { HYDRATE } from 'next-redux-wrapper';
 
 import auth, { initialState as authInitial } from './auth';
 import loader, { initialState as initialLoader } from './loader';
+import counter, { initialState as initialCount } from './counter';
 
 const extractWhiteList = (initialState, state, wl) => {
 	const newData = Object.entries(initialState).reduce((preVal, [key, val]) => {
@@ -29,16 +30,18 @@ const extractWhiteList = (initialState, state, wl) => {
 	return newData;
 };
 
-export const whitelist = ['settings'];
+export const whitelist = ['counter'];
 
 export const initialState = {
 	auth: authInitial,
 	loader: initialLoader,
+	count: initialCount,
 };
 
 const appReducer = combineReducers({
 	auth,
 	loader,
+	counter,
 });
 
 const reducers = (state, action) => {

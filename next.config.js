@@ -37,9 +37,7 @@ const nextConfig = withBundleAnalyzer(withAntdLess({
 	},
 
 	// for Next.js ONLY
-	nextjs: {
-		localIdentNameFollowDev: true, // default false, for easy to debug on PROD mode
-	},
+	reactStrictMode: true,
 
 	// Other Config Here...
 

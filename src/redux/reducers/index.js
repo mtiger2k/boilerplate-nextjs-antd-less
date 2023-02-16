@@ -35,7 +35,7 @@ export const whitelist = ['counter'];
 export const initialState = {
 	auth: authInitial,
 	loader: initialLoader,
-	count: initialCount,
+	counter: initialCount,
 };
 
 const appReducer = combineReducers({

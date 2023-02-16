@@ -10,24 +10,18 @@
 import React from 'react';
 
 import Head from 'src/components/Head';
-import { useSelector, useDispatch } from 'react-redux';
+import Counter from 'src/containers/Counter';
 
 import wrapperStore from 'src/redux';
 
-import { incrementCounter, decrementCounter, setCounter } from 'src/redux/actions/counter';
+import { setCounter } from 'src/redux/actions/counter';
 
 const CountPage = () => {
-	const globalState = useSelector((state) => state.counter.counter);
-	const dispatch = useDispatch();
-
 	return (
 		<>
 			<Head title="Counter" />
 
-			<h1>GLOBAL COUNTER {globalState}</h1>
-			<button onClick={() => dispatch(incrementCounter(globalState))}>Increment +</button>
-			{'  '}
-			<button onClick={() => dispatch(decrementCounter(globalState))}>Decrement -</button>
+			<Counter />
 		</>
 	);
 };

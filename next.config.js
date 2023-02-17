@@ -18,6 +18,17 @@ const fs = require('fs');
 
 const loadEnvConfig = require('./bin/env');
 
+const regexEqual = (x, y) => {
+	return (
+		x instanceof RegExp &&
+		y instanceof RegExp &&
+		x.source === y.source &&
+		x.global === y.global &&
+		x.ignoreCase === y.ignoreCase &&
+		x.multiline === y.multiline
+	);
+};
+
 loadEnvConfig();
 
 const antdVariables = lessToJS(fs.readFileSync(path.resolve(__dirname, 'src/styles/variables.less'), 'utf8'));
@@ -30,11 +41,6 @@ const nextConfig = withBundleAnalyzer(withAntdLess({
 	lessVarsFilePath: './src/styles/variables.less',
 	lessVarsFilePathAppendToEndOfContent: true,
 	// optional https://github.com/webpack-contrib/css-loader#object
-	cssLoaderOptions: {
-		modules: {
-			localIdentName: process.env.NODE_ENV !== 'production' ? '[folder]__[local]__[hash:4]' : '[hash:8]',
-		},
-	},
 
 	// for Next.js ONLY
 	reactStrictMode: true,
@@ -53,6 +59,24 @@ const nextConfig = withBundleAnalyzer(withAntdLess({
 				'THEME': { ...antdVariables },
 			}),
 		);
+
+		// fix selector not pure according to this issue: https://github.com/vercel/next.js/issues/11629
+		const oneOf = config.module.rules.find(
+			rule => typeof rule.oneOf === 'object',
+		);
+
+		if (oneOf) {
+			const moduleSassRule = oneOf.oneOf.find(rule => regexEqual(rule.test, /\.module\.(scss|sass)$/));
+
+			if (moduleSassRule) {
+				const cssLoader = moduleSassRule.use.find(({ loader }) => loader.includes('css-loader'));
+				if (cssLoader) {
+				// Use the default CSS modules mode. Next.js use 'pure'. Not sure of all implications
+					cssLoader.options.modules.mode = 'local';
+					cssLoader.options.modules.localIdentName = process.env.NODE_ENV !== 'production' ? '[folder]__[local]__[hash:4]' : '[hash:8]';
+				}
+			}
+		}
 
 		return config;
 	},

@@ -1,0 +1,490 @@
+{
+  "name": "huilian",
+  "uri": "http://huilian",
+  "associations": [],
+  "types": [
+    {
+      "name": "TopicHolder",
+      "extends": [
+        "bpmn:ServiceTask"
+      ],
+      "properties": [
+        {
+          "name": "topic",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "ReceiveTask",
+      "superClass": [
+        "Element"
+      ],
+      "extends": ["bpmn:ReceiveTask"],
+      "properties": [{
+        "name": "informTitle",
+        "isAttr": true,
+        "type": "String"
+      }, {
+        "name": "informContent",
+        "isAttr": true,
+        "type": "String"
+      }, {
+        "name": "assignStrategy",
+        "isAttr": true,
+        "type": "String"
+      }, {
+        "name": "assignValue",
+        "isAttr": true,
+        "type": "String"
+      },{
+        "name": "ccStrategy",
+        "isAttr": true,
+        "type": "String"
+      },{
+        "name": "bccStrategy",
+        "isAttr": true,
+        "type": "String"
+      }]
+    },
+    {
+      "name": "UserList",
+      "superClass": ["Element"],
+      "meta": {
+        "allowedIn": ["bpmn:ReceiveTask"]
+      },
+      "properties": [{
+        "name": "values",
+        "type": "User",
+        "isMany": true
+      }]
+    },
+    {
+      "name": "CcUserList",
+      "superClass": ["Element"],
+      "meta": {
+        "allowedIn": ["bpmn:ReceiveTask"]
+      },
+      "properties": [{
+        "name": "values",
+        "type": "CcUser",
+        "isMany": true
+      }]
+    },
+    {
+      "name": "CcUser",
+      "superClass": ["Element"],
+      "properties": [{
+        "name": "id",
+        "isAttr": true,
+        "type": "String"
+      }, {
+        "name": "name",
+        "isAttr": true,
+        "type": "String"
+      }]
+    },
+    {
+      "name": "BccUserList",
+      "superClass": ["Element"],
+      "meta": {
+        "allowedIn": ["bpmn:ReceiveTask"]
+      },
+      "properties": [{
+        "name": "values",
+        "type": "BccUser",
+        "isMany": true
+      }]
+    },
+    {
+      "name": "BccUser",
+      "superClass": ["Element"],
+      "properties": [{
+        "name": "id",
+        "isAttr": true,
+        "type": "String"
+      }, {
+        "name": "name",
+        "isAttr": true,
+        "type": "String"
+      }]
+    },
+    {
+      "name": "User",
+      "superClass": ["Element"],
+      "properties": [{
+        "name": "id",
+        "isAttr": true,
+        "type": "String"
+      }, {
+        "name": "name",
+        "isAttr": true,
+        "type": "String"
+      }]
+    },
+    {
+      "name": "HuilianUserTask",
+      "extends": [
+        "bpmn:UserTask"
+      ],
+      "properties": [
+        {
+          "name": "assignStrategy",
+          "isAttr": true,
+          "type": "String",
+          "default": null
+        },
+        {
+          "name": "assignValue",
+          "isAttr": true,
+          "type": "String",
+          "default": null
+        },
+        {
+          "name": "assignDesc",
+          "isAttr": true,
+          "type": "String",
+          "default": null
+        },
+        {
+          "name": "actions",
+          "isAttr": true,
+          "type": "Action",
+          "isMany": true
+        },
+        {
+          "name": "approvalTypeName",
+          "isAttr": true,
+          "type": "String",
+          "default": null
+        },
+        {
+          "name": "approvalTypeCode",
+          "isAttr": true,
+          "type": "String",
+          "default": null
+        },
+        {
+          "name": "approvalDistinct",
+          "isAttr": true,
+          "type": "String",
+          "default": null
+        },
+        {
+          "name": "enableEmailNotification",
+          "isAttr": true,
+          "type": "Boolean",
+          "default": null
+        },
+        {
+          "name": "errorHandlingCode",
+          "isAttr": true,
+          "type": "String",
+          "default": "10"
+        }
+      ]
+    },
+    {
+      "name": "HuilianStartEvent",
+      "extends": [
+        "bpmn:StartEvent"
+      ],
+      "properties": [
+        {
+          "name": "formPageId",
+          "isAttr": true,
+          "type": "String",
+          "default": null
+        },
+        {
+          "name": "formPageName",
+          "isAttr": true,
+          "type": "String",
+          "default": null
+        },
+        {
+          "name": "enableFeedbackNotification",
+          "isAttr": true,
+          "type": "Boolean",
+          "default": false
+        }
+      ]
+    },
+
+    {
+      "name": "GlobalVar",
+      "superClass": [
+        "Element"
+      ],
+      "meta": {
+        "allowedIn": ["bpmn:UserTask"]
+      },
+      "properties": [
+        {
+          "name": "values",
+          "type": "Variable",
+          "isMany": true
+        }
+      ]
+    },
+
+    {
+      "name": "ActionData",
+      "superClass": [
+        "Element"
+      ],
+      "meta": {
+        "allowedIn": [ "bpmn:UserTask" ]
+      },
+      "properties": [
+        {
+          "name": "values",
+          "type": "Action",
+          "isMany": true
+        }
+      ]
+    },
+    {
+      "name": "Action",
+      "superClass": [
+        "Element"
+      ],
+      "properties": [
+        {
+          "name": "action",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "isAttr": true
+        }
+      ]
+    },
+
+    {
+      "name": "InvisibleList",
+      "superClass": [
+        "Element"
+      ],
+      "meta": {
+        "allowedIn": [ "bpmn:UserTask" ]
+      },
+      "properties": [
+        {
+          "name": "values",
+          "type": "Variable",
+          "isMany": true
+        }
+      ]
+    },
+    {
+      "name": "Variable",
+      "superClass": [
+        "Element"
+      ],
+      "properties": [
+        {
+          "name": "name",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "fieldName",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "options",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "controlId",
+          "type": "String",
+          "isAttr": true
+        }
+      ]
+    },
+
+    {
+      "name": "EditableNode",
+      "superClass": [
+        "Element"
+      ],
+      "meta": {
+        "allowedIn": [ "bpmn:UserTask" ]
+      },
+      "properties": [
+        {
+          "name": "values",
+          "type": "Node",
+          "isMany": true
+        }
+      ]
+    },
+    {
+      "name": "Node",
+      "superClass": [
+        "Element"
+      ],
+      "properties": [{
+        "name": "lpKey",
+        "type": "String",
+        "isAttr": true
+      },
+      {
+        "name": "lpType",
+        "type": "String",
+        "isAttr": true
+      },
+      {
+        "name": "options",
+        "type": "String",
+        "isAttr": true
+      }]
+    },
+
+    {
+      "name": "ANDGateConditionVar",
+      "superClass": [
+        "Element"
+      ],
+      "meta": {
+        "allowedIn": ["bpmn:SequenceFlow"]
+      },
+      "properties": [
+        {
+          "name": "values",
+          "type": "Condition",
+          "isMany": true
+        }
+      ]
+    },
+    {
+      "name": "ORGateConditionVar",
+      "superClass": [
+        "Element"
+      ],
+      "meta": {
+        "allowedIn": ["bpmn:SequenceFlow"]
+      },
+      "properties": [
+        {
+          "name": "values",
+          "type": "Condition",
+          "isMany": true
+        }
+      ]
+    },
+    {
+      "name": "Condition",
+      "superClass": [
+        "Element"
+      ],
+      "properties": [
+        {
+          "name": "variableContext",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "variableOptions",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "variableType",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "variableName",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "fieldName",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "variableId",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "term",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "comparesValue",
+          "type": "String",
+          "isAttr": true
+        }
+      ]
+    },
+
+    {
+      "name": "PageSetting",
+      "superClass": [
+        "Element"
+      ],
+      "meta": {
+        "allowedIn": [
+          "bpmn:UserTask"
+        ]
+      },
+      "properties": [
+      {
+        "name": "values",
+        "type": "Attachment",
+        "isMany": true
+      }]
+    },
+    {
+      "name": "Attachment",
+      "superClass": [
+        "Element"
+      ],
+      "properties": [
+      {
+        "name": "enable",
+        "type": "String",
+        "isAttr": true
+      },
+      {
+        "name": "show",
+        "type": "String",
+        "isAttr": true
+      },
+      {
+        "name": "require",
+        "type": "String",
+        "isAttr": true
+      },
+      {
+        "name": "commentShow",
+        "type": "String",
+        "isAttr": true
+      },
+      {
+        "name": "commentRequire",
+        "type": "String",
+        "isAttr": true
+      }]
+    }
+  ],
+  "prefix": "huilian",
+  "xml": {
+    "tagAlias": "lowerCase"
+  }
+}

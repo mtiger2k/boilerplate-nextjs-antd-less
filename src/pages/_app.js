@@ -28,6 +28,7 @@ import { actionGetUserAuth } from 'src/redux/actions/auth';
 import AuthStorage from 'src/utils/auth-storage';
 
 require('src/styles/index.less');
+import 'src/styles/bpmn.sass'
 
 const urlsIgnore = ['/forgot-password', '/login-first', '/login', '/sign-up', '/verify-email', '/reset-password'];
 

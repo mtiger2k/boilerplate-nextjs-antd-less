@@ -23,6 +23,7 @@ import {
 	ApartmentOutlined,
 	DeploymentUnitOutlined,
 	AntDesignOutlined,
+	CalculatorOutlined
 } from '@ant-design/icons';
 
 const propTypes = {
@@ -63,6 +64,9 @@ const Sidebar = () => {
 		>
 			<Menu.Item key="/" onClick={() => router.push('/')} icon={<DashboardOutlined />}>
 				<span>Dashboard</span>
+			</Menu.Item>
+			<Menu.Item key="/counter" onClick={() => router.push('/counter')} icon={<CalculatorOutlined />}>
+				<span>Redux Counter</span>
 			</Menu.Item>
 			<Menu.Item key="/antd-demo" onClick={() => router.push('/antd-demo')} icon={<AntDesignOutlined />}>
 				<span>Antd Demo</span>

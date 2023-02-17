@@ -18,11 +18,11 @@ const Footer = (props) => {
 		<footer className={classes.footer}>
 			<div>
 				<strong className="text-primary">Boilerplate</strong>
-				<span> 2021 © All Rights Reserved.</span>
+				<span> 2023 © All Rights Reserved.</span>
 			</div>
 			<div className="ml-auto">
 				<span>Powered by </span>
-				<strong className="text-primary">Tien Tran</strong>
+				<strong className="text-primary">Scott, Tian</strong>
 			</div>
 		</footer>
 	);

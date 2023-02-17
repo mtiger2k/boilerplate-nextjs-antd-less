@@ -23,7 +23,7 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 
 const content = {
-	marginTop: '100px',
+	marginTop: '10px',
 };
 
 const propTypes = {
